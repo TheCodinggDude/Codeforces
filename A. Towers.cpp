@@ -23,19 +23,21 @@ using namespace std;
 #define s second
 
 void solve() {
-	int n,m , times ;
-	double maxe =0 , pos;
-	cin>>n>>m;
-	for(int i =1 ; i<=n ; ++i) {
-		double x;
+	int n;
+	cin>>n;
+	unordered_map<int , int> unmp;
+	for(int i =0 ; i<n ; ++i) {
+		int x;
 		cin>>x;
-		double times = ceil(x/m);
-		if(times >= maxe) {
-			maxe = times;
-			pos = i;
+		unmp[x]++;
+	}
+	int p = INT_MIN;
+	for(auto i : unmp) {
+		if(i.second > p) {
+			p = i.second;
 		}
 	}
-	cout<<pos;
+	cout<<p<<" "<<unmp.size();
 }
  
  
